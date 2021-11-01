@@ -1,16 +1,16 @@
 <template>
-    <div class="page-slug">
-        <TopBar />
-        <nuxt-content :document="doc"></nuxt-content>
-    </div>
+  <div class="page-slug">
+    <nuxt-content :document="doc" />
+  </div>
 </template>
 
 <script lang="ts">
+import { Context } from '@nuxt/types'
 export default {
-    async asyncData({ $content, params }) {
-        const doc = await $content(params.slug || 'hello').fetch()
+  async asyncData ({ $content, params } : Context) {
+    const doc = await $content(params.slug).fetch()
 
-        return { doc }
-    }
+    return { doc }
+  }
 }
 </script>

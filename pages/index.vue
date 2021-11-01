@@ -1,5 +1,7 @@
 <template>
-  <TopBar />
+  <div class="page-index">
+    <h1>Home</h1>
+  </div>
 </template>
 
 <script lang="ts">

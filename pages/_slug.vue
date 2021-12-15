@@ -1,5 +1,5 @@
 <template>
-  <div class="page-slug">
+  <div class="page-slug contain">
     <nuxt-content :document="doc" />
   </div>
 </template>

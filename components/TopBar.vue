@@ -1,22 +1,72 @@
 <template>
-  <nav class="top-bar-nav">
-    <NuxtLink to="/skills">
-      Skills
-    </NuxtLink>
-    <NuxtLink to="/projects">
-      Projects
-    </NuxtLink>
-    <a href="">Articles</a>
-  </nav>
+  <div class="top-bar contain">
+    <header class="site-header">
+      <NuxtLink to="/" class="header-link"><h1>Brian Kelleher</h1></NuxtLink>
+      <a class="btn dark-btn" @click="toggleDark()">Toggle Dark Mode</a>
+      <h2 class="header-description">Full-Stack Web Developer in Denver, CO</h2>
+    </header>
+    <nav class="top-bar-nav contain">
+      <NuxtLink to="/skills" class="navigation-link"> Skills </NuxtLink>
+      <NuxtLink to="/projects"> Projects </NuxtLink>
+      <a href="">Articles</a>
+    </nav>
+  </div>
 </template>
 
-<style lang="css" scoped>
-.top-bar-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    height: 60px;
+<script>
+export default {
+  data: () => {
+    return {}
+  },
+  methods: {
+    toggleDark() {
+      this.$emit('toggleTheme')
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.top-bar {
+  .site-header {
+    .header-link {
+      text-decoration: none;
+      color: black;
+    }
+    .header-description {
+      color: #8a8a8a;
+      font-family: sans-serif;
+      font-weight: normal;
+      font-size: 18px;
+    }
+  }
+
+  .top-bar-nav {
+    border-bottom: 1px solid $grey;
+    list-style-type: none;
+    padding: 0 0 24px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 16px;
+    .navigation-link {
+      color: blue;
+    }
+  }
+}
+
+.dark {
+  .top-bar {
+    .site-header {
+      .header-link {
+        color: white;
+      }
+    }
+    .top-bar-nav {
+      .navigation-link {
+        color: white;
+      }
+    }
+  }
 }
 </style>

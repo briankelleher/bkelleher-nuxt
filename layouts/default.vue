@@ -13,49 +13,48 @@ export default {
     }
   },
   computed: {
-    layoutClasses() {
+    layoutClasses () {
       let c = 'default-layout'
-      if ( this.dark ) {
+      if (this.dark) {
         c += ' dark'
       }
       return c
     }
   },
+  created () {
+    this.themeOnCreated()
+  },
   methods: {
-    setDark() {
-      console.log('setting dark')
+    setDark () {
       this.dark = true
-      if ( process.client ) {
-        console.log('browser client, setting dark')
-        document.cookie = "kelleher_theme=dark; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+      if (process.client) {
+        document.cookie = 'kelleher_theme=dark; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;'
         document.documentElement.className = 'dark'
       }
     },
-    setLight() {
-      console.log('setting light')
+    setLight () {
       this.dark = false
-      if ( process.client ) {
-        console.log('browser client, setting light')
-        document.cookie = "kelleher_theme=; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;";
+      if (process.client) {
+        document.cookie = 'kelleher_theme=; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/;'
         document.documentElement.className = ''
       }
     },
-    toggleTheme() {
-      if ( this.dark ) {
+    toggleTheme () {
+      if (this.dark) {
         this.setLight()
       } else {
         this.setDark()
       }
-    }
-  },
-  created() {
-    if ( process.client ) {
-      let cookie = document.cookie.split('; ').find(row => row.startsWith('kelleher_theme='))
-      let cookie_value = (cookie) ? cookie.split('=')[1] : ''
-      this.dark = cookie_value === 'dark';
+    },
+    themeOnCreated () {
+      if (process.client) {
+        const cookie = document.cookie.split('; ').find(row => row.startsWith('kelleher_theme='))
+        const cookieValue = (cookie) ? cookie.split('=')[1] : ''
+        this.dark = cookieValue === 'dark'
 
-      if ( this.dark ) {
-        this.setDark()
+        if (this.dark) {
+          this.setDark()
+        }
       }
     }
   }

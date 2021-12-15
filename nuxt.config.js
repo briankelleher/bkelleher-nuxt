@@ -55,5 +55,5 @@ export default {
     scss: [
       '~/assets/scss/variables.scss'
     ]
-   }
+  }
 }

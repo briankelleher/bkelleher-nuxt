@@ -1,13 +1,21 @@
 <template>
   <div class="top-bar contain">
     <header class="site-header">
-      <NuxtLink to="/" class="header-link"><h1>Brian Kelleher</h1></NuxtLink>
+      <NuxtLink to="/" class="header-link">
+        <h1>Brian Kelleher</h1>
+      </NuxtLink>
       <a class="btn dark-btn" @click="toggleDark()">Toggle Dark Mode</a>
-      <h2 class="header-description">Full-Stack Web Developer in Denver, CO</h2>
+      <h2 class="header-description">
+        Full-Stack Web Developer in Denver, CO
+      </h2>
     </header>
     <nav class="top-bar-nav contain">
-      <NuxtLink to="/skills" class="navigation-link"> Skills </NuxtLink>
-      <NuxtLink to="/projects"> Projects </NuxtLink>
+      <NuxtLink to="/skills" class="navigation-link">
+        Skills
+      </NuxtLink>
+      <NuxtLink to="/projects">
+        Projects
+      </NuxtLink>
       <a href="">Articles</a>
     </nav>
   </div>
@@ -19,7 +27,7 @@ export default {
     return {}
   },
   methods: {
-    toggleDark() {
+    toggleDark () {
       this.$emit('toggleTheme')
     }
   }

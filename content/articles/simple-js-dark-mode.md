@@ -42,7 +42,7 @@ Load this snippet in the footer, add a button to the page with a class of “dar
 
 To create a more consistent user experience for a user, I would recommend doing a basic check in your server side code to add a dark class to the `<body>` element, which will assist with the first paint rather than flashing light content first. For example, with PHP, on a hook that :
 
-```php[index.php]
+```php [index.php]
 <?php
 
 /**

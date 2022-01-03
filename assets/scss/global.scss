@@ -45,6 +45,14 @@ body {
     }
 }
 
+.row {
+    display: flex;
+    column-gap: 20px;
+    .col {
+        flex: 1;
+    }
+}
+
 .article-row {
     padding-top: 24px;
     padding-bottom: 24px;

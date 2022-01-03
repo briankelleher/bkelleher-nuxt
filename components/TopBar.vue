@@ -10,12 +10,9 @@
       </h1>
     </header>
     <nav class="top-bar-nav contain">
-      <a href="">Articles</a>
+      <NuxtLink to="/articles">Articles</NuxtLink>
       <NuxtLink to="/projects">
         Projects
-      </NuxtLink>
-      <NuxtLink to="/skills" class="navigation-link">
-        Skills
       </NuxtLink>
     </nav>
   </div>

@@ -1,14 +1,21 @@
 <template>
   <div class="page-index contain">
-    <h2>Articles</h2>
-
-    <div class="articles-excerpts">
-      <content-excerpt
-        v-for="article in articles"
-        :key="`ae-${article.slug}`"
-        :content="article"
-      />
+    <div class="row">
+      <div class="col">
+        <h2>Articles</h2>
+        <div class="articles-excerpts">
+          <content-excerpt
+            v-for="article in articles"
+            :key="`ae-${article.slug}`"
+            :content="article"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <h2>Projects</h2>
+      </div>
     </div>
+    
   </div>
 </template>
 

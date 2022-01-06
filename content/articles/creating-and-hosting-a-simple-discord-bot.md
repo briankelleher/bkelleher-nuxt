@@ -36,14 +36,13 @@ To start working on your bot, you will need to have an account on [Discord.com](
 
 In the top right corner of the page, there should be a button for “New Application”. You will be prompted for an application name. Now, there are plenty of different ways to develop a bot locally while also maintaining a bot in production using the same tokens, however I’ve found that an extremely effective method is to maintain two “applications” (one for production, and one for local development), and thus having two different bots. If you envision yourself doing this with your bot, I would name your Application something like `<your-application-name>-dev`, otherwise any simple name for your application will be fine for demo purposes.
 
-<article-image src="discord-intro-popup.png" alt="The popup interface for creating a new Discord Application" caption="The popup interface for creating a new Discord Application."></article-image>
+<article-image src="discord-intro-popup.png" alt="The popup interface for creating a new Discord Application" caption="The popup interface for creating a new Discord Application." max-width="650px"></article-image>
 
 Once you successfully create an application, you should be redirected to an application management page with a few menu options on the left. Before we leave this area, take note of the Client ID number below your Application description, as we will need it later. Navigate to the link on the left that says “Bot”.
 
 Here, we will need to set a username, which is the name that will be presented to other Discord users when your bot is sending messages. Right below the username is a place to reveal and manage your bot token as well, which we will need later.
 
-IMAGE HERE
-The username and token management area for your Discord Bot.
+<article-image src="discord-build-a-bot.png" alt="The username and token management area for your Discord Bot." caption="The username and token management area for your Discord Bot." max-width="720px"></article-image>
 
 ### Adding Your Bot to Your Discord Server
 
@@ -53,8 +52,7 @@ In order to do that, we need two things: the Client ID we retrieved earlier, and
 
 To create the Permissions Integer, you must navigate to the bottom of the Bot management page, to the section labelled “Bot Permissions”. Here you can select the permissions your bot will need to perform its duties, and the tool will generate a permissions integer for you at the bottom. Here is an example basic set of permissions that we can use to simply send messages to any basic, open channel:
 
-IMAGE HERE
-An example set of permissions for a basic Discord Bot.
+<article-image src="discord-bot-permissions.png" alt="An example set of permissions for a basic Discord Bot." caption="An example set of permissions for a basic Discord Bot." max-width="920px"></article-image>
 
 At the time of authoring, your bot by default is private. In order to add the bot to your server, you must enter a URL into your browser to prompt it. The URL should be formed as such, replacing {your-client-id} and {your-bot-permission-integer}:
 
@@ -64,7 +62,7 @@ https://discordapp.com/api/oauth2/authorize?client_id={your-client-id}&scope=bot
 
 Here, you should be prompted to select the server to add the bot to, and asked to accept any requested permissions for the bot. After successfully adding your bot to your server, you should see a message in your test server welcoming your bot, and the bot should now be listed on the Member List (which can be opened by selecting the icon in the top right of Discord that looks like two people). Since your bot is not running, your bot should appear in the “Offline” section, but in any case an example of my member list when the bot is running:
 
-IMAGE HERE
+<article-image src="discord-member-list.png" alt="Example Member List when Discord Bot is added successfully." caption="Example Member List when Discord Bot is added successfully." max-width="400px"></article-image>
 Example Member List when Discord Bot is added successfully.
 
 Using this same OAuth2 URL method, you can add this bot to any server you have permission to. It’s as simple as that. Now, we can start developing the actual bot code.
@@ -307,8 +305,7 @@ Once you are ready, make sure to head to DigitalOcean’s website and log into a
 
 There might be a few interfaces DigitalOcean will bring you through before you can create your first app, such as connecting your Github account, setting some base permissions, etc. Once you make it to step one of creating your app on the platform, you should be prompted to connect a code repository.
 
-IMAGEHERE
-DigitalOcean App Platform interface for connecting a code repository.
+<article-image src="digital-ocean-connect-code.png" alt="DigitalOcean App Platform interface for connecting a code repository." caption="DigitalOcean App Platform interface for connecting a code repository." max-width="900px"></article-image>
 
 Next, you should be prompted to create a name for your app, choose the hosting region, and set the branch you want your code to be pulled from. When ready, you can move onto the next step, which should pull and autodetect your code. Keep in mind that the platform will not be able to detect your app if it is hosted in a subfolder in your repository – the entry point to your app must be in the root directory. There are methods to host projects in subfolders, but we will not be covering those in this tutorial.
 

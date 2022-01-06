@@ -24,7 +24,13 @@ h2 {
     font-size: 40px;
 }
 h3 {
-    font-size: 32px;
+    font-size: 30px;
+}
+
+.nuxt-content-container {
+    h3 {
+        font-size: 48px;
+    }
 }
 
 body {
@@ -171,14 +177,20 @@ body {
     }
 }
 
-pre {
+pre[class*="language-"] span.token {
+    background-color: #29292976;
+}
+
+pre[class*="language-"], .nuxt-content-highlight pre[class*="language-"] {
     white-space: pre-wrap;
     font-family: monospace;
     padding: 20px;
-    background-color: #292929;
+    background-color: #29292976;
     color: white;
     font-size: 16px;
     border-radius: 5px;
+    font-weight: normal;
+    text-shadow: none;
 
     &.no-wrap {
         white-space: pre;

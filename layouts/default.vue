@@ -63,6 +63,7 @@ export default {
 
 <style scoped>
 .default-layout {
-    margin-top: 60px;
+    margin-top: 40px;
+    margin-bottom: 60px;
 }
 </style>

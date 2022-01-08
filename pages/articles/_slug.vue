@@ -2,7 +2,7 @@
   <div class="article-slug contain">
     <h2>{{ doc.title }}</h2>
     <p class="article-meta">
-      Last Updated: {{ formatDate(doc.updatedAt) }}
+      Last Updated: {{ doc.updatedAt | formatDate }}
     </p>
     <nuxt-content :document="doc" />
   </div>
@@ -16,16 +16,6 @@ export default {
     const doc = await $content('articles', params.slug).fetch()
 
     return { doc }
-  },
-  methods: {
-    formatDate (date:string) {
-      const options : Intl.DateTimeFormatOptions = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      }
-      return new Date(date).toLocaleDateString('en', options)
-    }
   }
 }
 </script>

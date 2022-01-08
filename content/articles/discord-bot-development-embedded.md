@@ -3,30 +3,33 @@ title: Discord Bot Development - Embedded Messages
 description: In this tutorial, I’ll be discussing some advanced Discord bot features, including embedded messages and interfacing with external APIs to inform bot responses.
 ---
 
-If you are looking for a quick intro to writing a Discord bot in JavaScript, I would head on over to my intro tutorial. In this tutorial, I’ll be discussing some advanced Discord bot features, including embedded messages and interfacing with external APIs to inform bot responses.
+If you are looking for a quick intro to writing a Discord bot in JavaScript, I would head on over to [my intro tutorial](/articles/creating-and-hosting-a-simple-discord-bot/). In this tutorial, I’ll be discussing some advanced Discord bot features, including embedded messages and interfacing with external APIs to inform bot responses.
 
 I will assume you have the following knowledge approaching this tutorial:
 
-an understanding of what the Discord platform is, and how to scaffold a simple bot for the platform (I explain this in a previous tutorial if you need a refresher)
-NodeJS and JavaScript
-having a test Discord server used to develop your bot
-basic understanding a RESTful API
+* an understanding of what the Discord platform is, and how to scaffold a simple bot for the platform (I explain this in a previous tutorial if you need a refresher)
+* NodeJS and JavaScript
+* having a test Discord server used to develop your bot
+* basic understanding a RESTful API
+
 I will cover:
 
-Creating an embedded message in Discord
-Pulling information from a basic RESTful API to inform an embedded message
+* Creating an embedded message in Discord
+* Pulling information from a basic RESTful API to inform an embedded message
+
 Requirements to get started:
 
-NodeJS 14+ installed locally
-Discord.com account and a test server equipped with your simple bot
-Simple bot project on your local machine, referenced in the previous tutorial
-Registering Our New Command
+* NodeJS 14+ installed locally
+* Discord.com account and a test server equipped with your simple bot
+* Simple bot project on your local machine, referenced in the previous tutorial
+
+### Registering Our New Command
+
 In the previous tutorial, we covered sending basic responses back to a user. As this method is perfectly acceptable for many bot implementations, there are enhanced messages in Discord called ’embedded messages’ which can provide a slightly better response format, easily distinguishable from standard user messages.
 
 To start, we will create a simple Weather.js class. We will extend the Command class that we created in a previous session so we can just focus on the fun part.
 
-// commands/Weather.js
-
+```js [commands/Weather.js]
 const Command = require('./Command.js');
 const { MessageEmbed } = require('discord.js');
 
@@ -55,11 +58,13 @@ module.exports = class extends Command {
     }
 
 }
+```
+
 Here we will setup the basics. This should give us a good starting point for the bot to simply recognize our command. Here I’ve also added a basic message argument parser. We could move this logic to our parent Command class, however not every message might parse the same. For now, we will keep it unique to the command.
 
 To register our command, we go back to index.js. Let’s import our command and register it in our commands array:
 
-// index.js
+```js [index.js]
 // Import all necessary libraries, commands, and functions.
 const Discord = require('discord.js')
 const client = new Discord.Client();
@@ -102,18 +107,23 @@ client.on('message', msg => {
 
 // Perform the login, which initializes a websocket connection.
 client.login(CLIENT_LOGIN_KEY);
+```
+
 Super easy, thanks to our previous work.
 
 Going back to our Weather command file, let’s add some basic functionality to fetch our weather data. We will need a bit of setup before we are ready to tackle the code. First, we will install Axios, a popular HTTP request library for convenience, and register for access to a weather API.
 
 To install axios, simply run:
 
+```bash
 npm i --save axios
+```
+
 For our weather API, you can certainly choose your own, but for the tutorial purposes I will be using the Open Weather service. It was very simple to create an account and register an API key through their website, which we will need for our API requests.
 
 For starters, lets import axios add two functions to our Weather class to handle the HTTP request to the weather service, and to craft the URL to request. We are also going to include a MessageEmbed class from discord.js which will assist us later in message creation:
 
-// commands/Weather.js
+```js [commands/Weather.js]
 const axios = require("axios");
 const { MessageEmbed } = require('discord.js');
 
@@ -138,13 +148,17 @@ async getWeather(location) {
         return "Error finding weather information.";
     }
 }
+```
+
 NOTE: If you are intending to put this type of service into production, I would recommend moving your API key to an environment variable, verifying the location parameter, returning a reliable type from the getWeather command, etc.
 
-Creating an Embedded Discord Message
+### Creating an Embedded Discord Message
+
 First, lets set two helper functions for ourselves. Based on our weather API response, I’ve decided I want to change the color of the discord embed message to match, and be able to present the degrees in Fahrenheit rather than Kelvin.
 
 Adding to our class methods:
 
+```js [commands/Weather.js]
 // Capable of translating a kelvin numeric value to Fahrenheit
 kelvinToF( kelvin ) {
     return ((kelvin - 273.15) * (9/5) + 32).toFixed(2);
@@ -173,10 +187,13 @@ getEmbedColorForType( type ) {
             return "AQUA";
     }
 }
+```
+
 Now, let’s edit our handler function.
 
 Replace the contents of the handler function with the following, and I will explain:
 
+```js [commands/Weather.js]
 handler() {
     // Set a couple of starter variables, and pull in message arguments/set defaults.
     let self = this;
@@ -221,19 +238,24 @@ handler() {
         });
     });
 }
+```
+
 I’ve commented each line, but essentially we initialize a MessageEmbed object, we set a bunch of fields and properties by default, we make a weather request, and based on the result we either complete our embedded message with weather data, or show an error.
 
 It’s that simple! We should be ready to test. Start up our server with node index.js, and test the command in your server! You should see the following:
 
+<article-image src="discord-weather-embed-message.png" alt="Embedded Message output for a basic weather command." caption="Embedded Message output for a basic weather command." max-width="450px"></article-image>
 
-Embedded Message output for a basic weather command.
 Success!
 
-Additional Capabilities and Resources
-Now, embedded messages are really powerful. They can display a lot of information in a user friendly format, link to resources, and even attach files. I highly recommend browsing the discord.js API documentation, particularly on MessageEmbed, to see all of the available methods and properties to customize a message. In another side project I was able to use these advanced features to flush out embedded messages to be rather useful:
+### Additional Capabilities and Resources
 
+Now, embedded messages are really powerful. They can display a lot of information in a user friendly format, link to resources, and even attach files. I highly recommend browsing the discord.js API documentation, [particularly on MessageEmbed](https://discord.js.org/#/docs/main/stable/class/MessageEmbed), to see all of the available methods and properties to customize a message. In another side project I was able to use these advanced features to flush out embedded messages to be rather useful:
 
+<article-image src="discord-embed-stock.png" alt="Embedded stock data." caption="Embedded stock data." max-width="650px"></article-image>
 
-If you are looking for a place to get started with creating embedded media on the fly such as the graph above, I can recommend looking at a project such as the chartjs-node-canvas project. Discord’s powerful API and messaging capabilities matched with powerful Node tools for calculations and media creation can result in some really fun and useful possibilities.
+<article-image src="discord-embed-stock-graph.png" alt="Embedded stock graph." caption="Embedded stock graph." max-width="650px"></article-image>
 
-To let me know your thoughts or questions on a project like this – just shoot me an email or tweet me!
+If you are looking for a place to get started with creating embedded media on the fly such as the graph above, I can recommend looking at a project such as the [chartjs-node-canvas project](https://www.npmjs.com/package/chartjs-node-canvas). Discord’s powerful API and messaging capabilities matched with powerful Node tools for calculations and media creation can result in some really fun and useful possibilities.
+
+To let me know your thoughts or questions on a project like this – just [tweet me](https://twitter.com/b_kelleher)!

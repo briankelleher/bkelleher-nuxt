@@ -63,7 +63,6 @@ https://discordapp.com/api/oauth2/authorize?client_id={your-client-id}&scope=bot
 Here, you should be prompted to select the server to add the bot to, and asked to accept any requested permissions for the bot. After successfully adding your bot to your server, you should see a message in your test server welcoming your bot, and the bot should now be listed on the Member List (which can be opened by selecting the icon in the top right of Discord that looks like two people). Since your bot is not running, your bot should appear in the “Offline” section, but in any case an example of my member list when the bot is running:
 
 <article-image src="discord-member-list.png" alt="Example Member List when Discord Bot is added successfully." caption="Example Member List when Discord Bot is added successfully." max-width="400px"></article-image>
-Example Member List when Discord Bot is added successfully.
 
 Using this same OAuth2 URL method, you can add this bot to any server you have permission to. It’s as simple as that. Now, we can start developing the actual bot code.
 

@@ -21,6 +21,14 @@ export default {
 </script>
 
 <style lang="scss">
+.dark {
+  .article-slug {
+    .article-meta {
+      color: #c1c5cb;
+    }
+  }
+}
+
 .article-slug {
     margin-top: 30px;
     h2 {
@@ -32,7 +40,7 @@ export default {
         font-family: "Archivo Narrow", sans-serif;
         margin-bottom: 60px;
         font-size: 18px;
-        color: #c1c5cb;
+        color: #525252;
     }
     .nuxt-content {
         line-height: 1.8;

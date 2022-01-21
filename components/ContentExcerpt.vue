@@ -36,7 +36,15 @@ export default {
     .article-meta {
         font-family: "Archivo Narrow", sans-serif;
         font-size: 18px;
-        color: #c1c5cb;
+        color: #525252;
+    }
+}
+
+.dark {
+    .content-excerpt {
+        .article-meta {
+            color: #c1c5cb;
+        }
     }
 }
 </style>

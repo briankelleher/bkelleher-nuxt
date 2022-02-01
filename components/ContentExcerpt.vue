@@ -1,25 +1,41 @@
 <template>
   <div class="content-excerpt">
-    <h3>{{ content.title }}</h3>
+    <NuxtLink :to="contentLink"><h3>{{ content.title }}</h3></NuxtLink>
     <p class="article-meta">
       Last Updated: {{ content.updatedAt | formatDate }}
     </p>
     <p>{{ content.description }}</p>
-    <NuxtLink :to="`/articles/${content.slug}`" class="content-excerpt-link">
+    <NuxtLink :to="contentLink" class="content-excerpt-link">
       Read More
     </NuxtLink>
   </div>
 </template>
 
 <script lang="ts">
-export default {
+import Vue, { PropType } from 'vue'
+
+interface BKContent {
+  slug: string,
+  title: string,
+  updatedAt: Date,
+  description: string
+}
+
+const ContentExcerpt = Vue.extend({
   props: {
     content: {
       required: true,
-      type: Object
+      type: Object as PropType<BKContent>
+    }
+  },
+  computed: {
+    contentLink() : string {
+      return `/articles/${this.content.slug}`
     }
   }
-}
+})
+
+export default ContentExcerpt
 </script>
 
 <style lang="scss">

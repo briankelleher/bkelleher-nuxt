@@ -11,9 +11,7 @@
     </header>
     <nav class="top-bar-nav contain">
       <NuxtLink to="/articles">Articles</NuxtLink>
-      <NuxtLink to="/projects">
-        Projects
-      </NuxtLink>
+      <a href="https://twitter.com/b_kelleher">Twitter</a>
     </nav>
   </div>
 </template>

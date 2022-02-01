@@ -17,7 +17,7 @@ import ContentExcerpt from '@/components/ContentExcerpt.vue'
 
 export default {
   components: { ContentExcerpt },
-  async asyncData({ $content } : Context) {
+  async asyncData ({ $content } : Context) {
     const articles = await $content('articles').limit(10).fetch()
 
     return { articles }

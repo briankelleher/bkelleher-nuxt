@@ -10,7 +10,9 @@
       </h1>
     </header>
     <nav class="top-bar-nav contain">
-      <NuxtLink to="/articles">Articles</NuxtLink>
+      <NuxtLink to="/articles">
+        Articles
+      </NuxtLink>
       <a href="https://twitter.com/b_kelleher">Twitter</a>
     </nav>
   </div>

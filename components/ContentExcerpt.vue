@@ -1,6 +1,8 @@
 <template>
   <div class="content-excerpt">
-    <NuxtLink :to="contentLink"><h3>{{ content.title }}</h3></NuxtLink>
+    <NuxtLink :to="contentLink">
+      <h3>{{ content.title }}</h3>
+    </NuxtLink>
     <p class="article-meta">
       Last Updated: {{ content.updatedAt | formatDate }}
     </p>
@@ -12,7 +14,8 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
+import Vue from 'vue'
+import type { PropType } from 'vue'
 
 interface BKContent {
   slug: string,
@@ -29,7 +32,7 @@ const ContentExcerpt = Vue.extend({
     }
   },
   computed: {
-    contentLink() : string {
+    contentLink () : string {
       return `/articles/${this.content.slug}`
     }
   }

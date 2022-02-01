@@ -1,43 +1,43 @@
 <template>
-    <figure class="article-image">
-        <img
-            :src="require(`~/assets/img/${this.src}`)"
-            :alt="alt"
-            :style="imageStyle"
-        />
-        <figcaption>{{ caption }}</figcaption>
-    </figure>
+  <figure class="article-image">
+    <img
+      :src="require(`~/assets/img/${src}`)"
+      :alt="alt"
+      :style="imageStyle"
+    >
+    <figcaption>{{ caption }}</figcaption>
+  </figure>
 </template>
 
 <script>
 export default {
-    props: {
-        src: {
-            type: String,
-            required: true
-        },
-        alt: {
-            type: String,
-            required: true
-        },
-        caption: {
-            type: String,
-            default: ""
-        },
-        maxWidth: {
-            type: String,
-            default: '100%'
-        }
+  props: {
+    src: {
+      type: String,
+      required: true
     },
-    computed: {
-        imageStyle() {
-            let style = ''
-            if ( this.maxWidth ) {
-                style += `max-width:${this.maxWidth}`
-            }
-            return style
-        }
+    alt: {
+      type: String,
+      required: true
+    },
+    caption: {
+      type: String,
+      default: ''
+    },
+    maxWidth: {
+      type: String,
+      default: '100%'
     }
+  },
+  computed: {
+    imageStyle () {
+      let style = ''
+      if (this.maxWidth) {
+        style += `max-width:${this.maxWidth}`
+      }
+      return style
+    }
+  }
 }
 </script>
 

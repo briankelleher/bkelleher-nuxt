@@ -1,7 +1,7 @@
 <template>
-    <div class="callout-paragraph">
-        <p><slot /></p>
-    </div>
+  <div class="callout-paragraph">
+    <p><slot /></p>
+  </div>
 </template>
 
 <style scoped>

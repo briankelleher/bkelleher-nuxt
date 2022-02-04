@@ -11,10 +11,14 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v2.3.1
 
-            - name: Install and Build
-              run: |
-                  yarn install
-                  yarn run build
+            - name: Install
+              run: yarn install
+            
+            - name: Build
+              run: yarn run build
+
+            - name: Generate Nuxt
+              run: yarn run generate
 
             - name: Deploy
               uses: JamesIves/github-pages-deploy-action@4.1.7

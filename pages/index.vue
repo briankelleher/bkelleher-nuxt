@@ -5,6 +5,17 @@
     </callout-paragraph>
     <div class="row">
       <div class="col">
+        <callout-paragraph>
+        Most recently, I've been working on:
+        <ul>
+          <li><a href="https://access2ag.com">Access2Ag</a>, connecting bus routes with locally grown food sources</li>
+          <li><a href="https://sourceryapp.org">Sourcery</a>, a source for requesting and servicing archival documents</li>
+        </ul>
+        </callout-paragraph>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
         <h2>Articles</h2>
         <div class="articles-excerpts">
           <content-excerpt
@@ -21,8 +32,9 @@
 <script lang="ts">
 import { Context } from '@nuxt/types'
 import ContentExcerpt from '@/components/ContentExcerpt.vue'
+import CalloutParagraph from '~/components/CalloutParagraph.vue'
 export default {
-  components: { ContentExcerpt },
+  components: { ContentExcerpt, CalloutParagraph },
   async asyncData ({ $content } : Context) {
     const articles = await $content('articles').limit(5).fetch()
 

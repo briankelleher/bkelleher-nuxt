@@ -1,1 +1,0 @@
-window.__NUXT__=(function(a){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1648826722",layout:"default",error:a,serverRendered:true,routePath:"\u002Farticles\u002Fdiscord-bot-development-embedded",config:{_app:{basePath:"\u002F",assetsPath:"\u002F_nuxt\u002F",cdnURL:a},content:{dbHash:"9aea371b"}}}}(null));

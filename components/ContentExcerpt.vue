@@ -43,6 +43,7 @@ export default ContentExcerpt
 
 <style lang="scss">
 .content-excerpt {
+  margin-bottom: 65px;
     h3 {
         margin-bottom: 18px;
     }

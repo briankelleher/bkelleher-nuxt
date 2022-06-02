@@ -4,7 +4,7 @@
       <NuxtLink to="/" class="header-link">
         <h1>Brian Kelleher</h1>
       </NuxtLink>
-      <a class="btn dark-btn" @click="toggleDark()">Toggle Dark Mode</a>
+      <toggle-dark />
       <h1 class="header-description">
         Full-Stack Web Developer in Denver, CO
       </h1>
@@ -22,11 +22,6 @@
 export default {
   data: () => {
     return {}
-  },
-  methods: {
-    toggleDark () {
-      this.$emit('toggleTheme')
-    }
   }
 }
 </script>
@@ -34,6 +29,7 @@ export default {
 <style lang="scss" scoped>
 .top-bar {
   .site-header {
+    padding-top: 10px;
     .header-link {
       text-decoration: none;
       color: black;

@@ -5,13 +5,13 @@
     </callout-paragraph>
     <div class="row">
       <div class="col">
-        <callout-paragraph>
-        Most recently, I've been working on:
+        <callout-content>
+        <p>Most recently, I've been working on:</p>
         <ul>
           <li><a href="https://access2ag.com">Access2Ag</a>, connecting bus routes with locally grown food sources</li>
           <li><a href="https://sourceryapp.org">Sourcery</a>, a source for requesting and servicing archival documents</li>
         </ul>
-        </callout-paragraph>
+        </callout-content>
       </div>
     </div>
     <div class="row">
